@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+	MyCloud List of Files
+{% endblock %}
+
+{% block head %}
+<!--
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		-->
+{% endblock %}
+
+{% block content %}
+	<div class="header">
+		{% include 'partials/header.html' %}
+	</div>
+	<div class="content">
+		<div class="row mt-4">
+			<div class="col ml-4">
+				<h4> Welcome {{user.name}}  </h4>
+			</div>
+			<div class="col mr-4 text-right">
+				<button type="button"
+						class="btn btn-outline-primary btn-sm"
+						data-toggle="modal"
+						data-target="#uploadModal"
+				>
+					Upload
+				</button>
+			</div>
+		</div>
+		{% if error != '' %}
+			<div class="mt-5 alert alert-danger" role="alert">
+				{{ error }}
+			</div>
+		{% endif %}
+
+		<div class="mt-4">
+            <table class="table table-bordered table-hover table-sm">
+                <thead class="thead-light itemList">
+                <tr>
+					<th scope="col" style="width: 35%"><span class="title">File Name</span></th>
+					<th scope="col" style="width: 10%"><span class="title">Size (MB)</span></th>
+					<th scope="col" style="width: 15%"><span class="title">Uploaded At</span></th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+				{% for f in formatted_file_data %}
+                <tr>
+					<td>
+						{{ f['originalFileName'] }}
+					</td>
+					<td>
+						{{ f['formattedSize'] }}
+					</td>
+                    <td>
+						{{ f['formattedDate'] }} day ago
+					</td>
+                    <td>
+						<button type="button" class="btn btn-outline-info btn-sm ml-4 mr-4">
+							Share
+						</button>
+						<button type="button" class="btn btn-outline-danger btn-sm ml-4 mr-4">
+							Delete
+						</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm ml-4">
+							Reset
+						</button>
+					</td>
+                </tr>
+              	{% endfor %}
+                </tbody>
+            </table>
+		</div>
+
+		{% include 'partials/upload_modal.html' %}
+	</div>
+{% endblock %}

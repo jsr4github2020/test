@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+	MyCloud Login Page
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<style type="text/css">
+
+	</style>
+{% endblock %}
+
+{% block content %}
+	<div class="card login-card">
+	  <div class="card-body">
+	    <h1 class="text-center mt-4">My Cloud</h1>
+
+	    <h4 class="text-center mt-4">Login to your account</h4>
+
+	    {% if signupSucsess != '' %}
+		    <div class="mt-5 alert alert-success" role="alert">
+		    	{{ signupSucsess }}
+		    </div>
+	    {% endif %}
+
+	    {% if error != '' %}
+		    <div class="mt-5 alert alert-danger" role="alert">
+		    	{{ error }}
+		    </div>
+	    {% endif %}
+
+	    <form method="post" action="/check_login">
+	      <div class="form-group form-group-lg mt-5">
+	        <label for="email">Email address</label>
+	        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+	        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	      </div>
+	      <div class="form-group form-group-lg mt-5">
+	        <label for="password">Password</label>
+	        <input type="password" class="form-control" id="password" name="password">
+	      </div>
+	      <div class="text-center mt-5">
+	      	<button type="submit" class="btn btn-lg btn-primary">Login</button>
+	      </div>  
+	    </form>
+
+	    <p class="text-center mt-4">Don't have an account? <a href="#">Sign Up Here</a></p>
+	  </div>
+	</div>
+{% endblock %}

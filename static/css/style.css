@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+.container {
+	width: 900px;
+	margin:0 auto;
+}
+
+.login-card {
+			margin-top: 200px;
+}
+
+h1 {
+	 text-transform: uppercase;
+}
+.title {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 12px;
+color:#000000;
+}
+
+thread.itemList th {
+background-color:#ccf;
+}
+
+table.itemList th, table.itemList td {
+text-align: center;
+margin: 2px 5px;
+padding:1 px 2px 3px;
+vertical-align: middle;
+}
